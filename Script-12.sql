@@ -71,6 +71,6 @@ CREATE TABLE voto(
 INSERT INTO voto(id_stud,id_doc, id_materia, voto, data_voto, note)
 SELECT s.id_stud,d.id_doc, m.id_materia, CONVERT(DECIMAL,  REPLACE(a.voto, ',', '')), a.data_assegnazione , a.note 
 FROM assegnazioni a
-LEFT JOIN studente s ON a.nome_stud = s.nome_stud AND a.cognome_stud = s.cognome_stud
+LEFT JOIN studente s ON a.nome_stud = s.nome_stud AND a.cognome_stud = s.cognome_stud AND a.classe = s.classe AND a.sezione = s.sezione 
 LEFT JOIN docente d ON a.nome_doc = d.nome_doc  AND a.cognome_doc = d.cognome_doc 
 LEFT JOIN materia m ON a.materia = m.materia 
